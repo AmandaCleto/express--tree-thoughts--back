@@ -1,0 +1,24 @@
+{
+  "name": "tree_thoughts_back",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "node ./src/server/index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmandaCleto/Tree-Thoughts-Back.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AmandaCleto/Tree-Thoughts-Back/issues"
+  },
+  "homepage": "https://github.com/AmandaCleto/Tree-Thoughts-Back#readme",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1"
+  }
+}
