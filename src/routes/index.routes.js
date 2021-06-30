@@ -1,9 +1,13 @@
 const { Router } = require('express');
 const router = Router();
+const { authMiddleware } = require('../middlewares/authentication');
 
-router.get('/teste', (req, res) => {
-    res.status(200).json({
-        teste: "hello world"
+
+router.post('/teste',
+    [authMiddleware],
+    (req, res) => {
+        res.status(200).json({
+            authenticated: true
     });
 });
 
