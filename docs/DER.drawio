@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2021-06-30T01:38:08.366Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36" etag="q77W3fIGjkexJ7wABBlJ" version="14.8.2" type="github">
+<mxfile host="app.diagrams.net" modified="2021-06-30T02:27:09.012Z" agent="5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36" etag="TvVtdSySv31sNHrT5M4A" version="14.8.2" type="github">
   <diagram id="dFQ83MWQbFeCM8F21P78" name="Page-1">
-    <mxGraphModel dx="1422" dy="775" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="569" dy="310" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -16,7 +16,7 @@
         <mxCell id="xou5hH0iGpgoQNsRLM-i-4" value="PK" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;" vertex="1" parent="xou5hH0iGpgoQNsRLM-i-3">
           <mxGeometry width="30" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="xou5hH0iGpgoQNsRLM-i-5" value="ID (int - auto increment - unsigned)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=1;overflow=hidden;" vertex="1" parent="xou5hH0iGpgoQNsRLM-i-3">
+        <mxCell id="xou5hH0iGpgoQNsRLM-i-5" value="id (int - auto increment - unsigned)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=1;overflow=hidden;" vertex="1" parent="xou5hH0iGpgoQNsRLM-i-3">
           <mxGeometry x="30" width="280" height="30" as="geometry" />
         </mxCell>
         <mxCell id="xou5hH0iGpgoQNsRLM-i-6" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="xou5hH0iGpgoQNsRLM-i-2">
@@ -61,7 +61,7 @@
         <mxCell id="xou5hH0iGpgoQNsRLM-i-19" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;" vertex="1" parent="xou5hH0iGpgoQNsRLM-i-18">
           <mxGeometry width="51.66666666666667" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="xou5hH0iGpgoQNsRLM-i-20" value="email (varchar(255) - not null)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=1;overflow=hidden;" vertex="1" parent="xou5hH0iGpgoQNsRLM-i-18">
+        <mxCell id="xou5hH0iGpgoQNsRLM-i-20" value="email (varchar(255) - not null - unique)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=1;overflow=hidden;" vertex="1" parent="xou5hH0iGpgoQNsRLM-i-18">
           <mxGeometry x="35.769230769230774" width="274.2307692307692" height="30" as="geometry" />
         </mxCell>
         <mxCell id="xou5hH0iGpgoQNsRLM-i-24" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=1;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="1">
@@ -91,7 +91,7 @@
         <mxCell id="xou5hH0iGpgoQNsRLM-i-32" value="PK" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;" vertex="1" parent="xou5hH0iGpgoQNsRLM-i-31">
           <mxGeometry width="30" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="xou5hH0iGpgoQNsRLM-i-33" value="ID (int - auto increment - unsigned)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=1;overflow=hidden;" vertex="1" parent="xou5hH0iGpgoQNsRLM-i-31">
+        <mxCell id="xou5hH0iGpgoQNsRLM-i-33" value="id (int - auto increment - unsigned)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=1;overflow=hidden;" vertex="1" parent="xou5hH0iGpgoQNsRLM-i-31">
           <mxGeometry x="30" width="280" height="30" as="geometry" />
         </mxCell>
         <mxCell id="xou5hH0iGpgoQNsRLM-i-34" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="xou5hH0iGpgoQNsRLM-i-30">
