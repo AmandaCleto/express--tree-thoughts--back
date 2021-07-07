@@ -27,15 +27,15 @@ module.exports = {
         profile_image: {
           type: Sequelize.STRING,
           allowNull: false,
-          default: ''
+          defaultValue: ''
         },
         create_at: {
           type: Sequelize.DATE,
-          default: Sequelize.literal('CURRENT_TIMESTAMP')
+          defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
         },
         update_at: {
           type: Sequelize.DATE,
-          default: Sequelize.literal('CURRENT_TIMESTAMP')
+          defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
         }
       }
     );

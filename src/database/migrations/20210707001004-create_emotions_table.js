@@ -9,7 +9,7 @@ module.exports = {
           type: Sequelize.INTEGER(11).UNSIGNED,
           allowNull: false,
           primaryKey: true,
-          autoIncrement: true
+          autoIncrement: false
         },
         name: {
           type: Sequelize.STRING,
@@ -17,11 +17,11 @@ module.exports = {
         },
         create_at: {
           type: Sequelize.DATE,
-          default: Sequelize.literal('CURRENT_TIMESTAMP')
+          defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
         },
         update_at: {
           type: Sequelize.DATE,
-          default: Sequelize.literal('CURRENT_TIMESTAMP')
+          defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
         }
       }
     )
