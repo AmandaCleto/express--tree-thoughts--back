@@ -6,9 +6,7 @@ const process = require('process');
 const path = require('path');
 const cors = require('cors');
 
-const databaseConnection = require('../database/connection');
-
-const router = require('../routes/index.routes');
+const router = require('../routes');
 
 const app = express();
 const server = http.createServer(app);
@@ -26,5 +24,4 @@ const PORT = process.env.PORT;
 
 server.listen(PORT, async () => {
     console.log(`Server is ready 🚀 :${PORT}`);
-    await databaseConnection();
 });
