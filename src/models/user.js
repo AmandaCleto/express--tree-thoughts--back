@@ -3,15 +3,16 @@
 const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../database/connection');
 
+const bcrypt = require('bcryptjs');
 
-class Users extends Model {
+class User extends Model {
 
   static associate(models) {
     // define association here
   }
 };
 
-Users.init({
+User.init({
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true
@@ -37,18 +38,17 @@ Users.init({
     },
   },
   password: DataTypes.CHAR(60),
-  profile_name: DataTypes.STRING,
+  profile_image: DataTypes.STRING,
   create_at: DataTypes.DATE,
   update_at: DataTypes.DATE,
 }, {
   hooks: {
-    beforeValidate: (User, options) => {
-      // User.changed criptografar senha
-      // console.log(User, options);
+    afterValidate: (User) => {
+      User.password = bcrypt.hashSync(User.password, 10);
     }
   },
   sequelize,
   modelName: 'Users',
 });
 
-module.exports = Users;
+module.exports = User;
