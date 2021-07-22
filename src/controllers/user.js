@@ -2,19 +2,19 @@ const User = require('../models/user');
 
 async function create(req, res) {
     try {
-        const { name, email, password } = req.body;
+        const { name: nameReceived, email: emailReceived, password: passwordReceived } = req.body;
 
-        const userCreated = await User.create({
-            name,
-            email,
-            password
+        const doesUserCreated = await User.create({
+            name: nameReceived,
+            email: emailReceived,
+            password: passwordReceived
         });
 
-        delete userCreated.password;
+        delete doesUserCreated.password;
 
-        return res.json({userCreated});
+        return res.json({doesUserCreated});
 
-    } catch ({errors}) {
+    } catch ({errros}) {
         const { message, path } = errors[0];
         return res.status(400).json({
             [path]: message
