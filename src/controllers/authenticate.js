@@ -1,27 +1,35 @@
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const process = require('process');
 
 async function authenticate(req, res) {
     try {
-        const { email, password } = req.body;
+        const { email: emailReceived, password: passwordReceived } = req.body;
 
-        const userExists = await User.findOne({
+        const doesUserExist = await User.findOne({
             where: {
-                email: email,
+                email: emailReceived
             }
         });
 
-        if (!userExists) {
-            throw new Error('deu ruim');
+        if (!doesUserExist) {
+            throw new Error('bad!');
         }
 
-        const validPassword = bcrypt.compareSync(password, userExists.password);
+        const doesPasswordValid = bcrypt.compareSync(passwordReceived, doesUserExist.password);
 
-        if (!validPassword) {
-            throw new Error('não não nãaaaao ela nao é modelo');
+        if (!doesPasswordValid) {
+            throw new Error('noo!!');
         }
 
-        return res.json({logged: true});
+        const tokenJwt = jwt.sign(
+            { userId: doesUserExist.id }, // payload = data
+            process.env.JWT_SECRET, // secret key
+            { algorithm: 'HS256', expiresIn: '12h' } // configs with iat
+        );
+
+        return res.json({token: tokenJwt});
     } catch (error) {
         return res.status(401).json({
             message: error.message
