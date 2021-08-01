@@ -4,9 +4,7 @@ const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../database/connection');
 
 const bcrypt = require('bcryptjs');
-
 class User extends Model {
-
   static associate(models) {
     // define association here
   }
@@ -42,6 +40,16 @@ User.init({
   create_at: DataTypes.DATE,
   update_at: DataTypes.DATE,
 }, {
+  defaultScope: {
+    attributes: {
+      exclude: ['password'],
+    }
+  },
+  scopes: {
+    withPassword: {
+      attributes: { include: ['password'] },
+    }
+  },
   hooks: {
     afterValidate: (User) => {
       User.password = bcrypt.hashSync(User.password, 10);
@@ -50,5 +58,6 @@ User.init({
   sequelize,
   modelName: 'Users',
 });
+
 
 module.exports = User;

@@ -7,7 +7,7 @@ async function authenticate(req, res) {
     try {
         const { email: emailReceived, password: passwordReceived } = req.body;
 
-        const doesUserExist = await User.findOne({
+        const doesUserExist = await User.scope('withPassword').findOne({
             where: {
                 email: emailReceived
             }
