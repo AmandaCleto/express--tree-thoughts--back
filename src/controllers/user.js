@@ -10,11 +10,25 @@ async function create(req, res) {
             password: passwordReceived
         });
 
-        delete doesUserCreated.password;
-
         return res.json({doesUserCreated});
 
-    } catch ({errros}) {
+    } catch ({erros}) {
+        const { message, path } = errors[0];
+        return res.status(400).json({
+            [path]: message
+        });
+    }
+}
+
+async function get(req, res) {
+    try {
+        const { userId } = req;
+
+        const getUser = await User.findByPk(userId);
+
+        return res.json({getUser});
+
+    } catch ({erros}) {
         const { message, path } = errors[0];
         return res.status(400).json({
             [path]: message
@@ -23,5 +37,6 @@ async function create(req, res) {
 }
 
 module.exports = {
-    create
+    create,
+    get
 }
