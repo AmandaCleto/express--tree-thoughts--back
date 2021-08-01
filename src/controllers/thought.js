@@ -60,10 +60,40 @@ async function destroy(req, res) {
     }
 }
 
+async function update(req, res) {
+    try {
+        const { thought_id: thoughtIdReceived } = req.params;
+
+        const { description: descriptionReceived, emotion_id: emotionIdReceived } = req.body;
+
+        const doesThoughtFound = await Thought.update(
+            {
+                description: descriptionReceived, //passing descriptionReceived from 'req.body' to description from Model
+                emotion_id: emotionIdReceived //passing emotionIdReceived from 'req.body' to emotion_id from Model
+            },
+            {
+                where: {
+                    id: thoughtIdReceived, //which thought it is
+                    user_id: req.userId, //whose thought it is
+                }
+            }
+        );
+
+        return res.json({doesThoughtFound})
+
+    } catch ({errors}) {
+        const { message, path } = errors[0];
+        return res.status(400).json({
+            [path]: message
+        });
+    }
+}
+
 
 
 module.exports = {
     create,
     get,
-    destroy
+    destroy,
+    update
 };
