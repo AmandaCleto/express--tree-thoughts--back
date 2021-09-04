@@ -27,7 +27,7 @@ module.exports = {
           onUpdate: 'cascade',
           onDelete: 'cascade'
         },
-        emoton_id: {
+        emotion_id: {
           type: Sequelize.INTEGER(11).UNSIGNED,
           allowNull: false,
           references: {
