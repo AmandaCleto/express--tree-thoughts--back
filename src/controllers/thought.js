@@ -1,5 +1,6 @@
 const Thought = require('../models/thought');
 const Emotion = require('../models/emotion');
+const { ThrowErrorCustom } = require('../utils/error');
 
 async function create(req, res) {
     try {
@@ -8,77 +9,117 @@ async function create(req, res) {
             emotion_name: emotionNameReceived
         } = req.body;
 
-        const {id: getEmotionId} = await Emotion.findOne({
+        if(!descriptionReceived) {
+            throw new ThrowErrorCustom({
+                message: 'É obrigatório informar a descrição',
+                status: 400
+            })
+        }
+
+        if(!emotionNameReceived) {
+            throw new ThrowErrorCustom({
+                message: 'É obrigatório informar a cor',
+                status: 400
+            })
+        }
+
+        const {id: gotEmotionId} = await Emotion.findOne({
             attributes: ['id'],
             where: {
                 name: emotionNameReceived
             }
         });
 
-        const doesThoughtCreated = await Thought.create({
+        const wasThoughtCreated = await Thought.create({
             user_id: req.userId,
             description: descriptionReceived,
-            emotion_id: getEmotionId,
+            emotion_id: gotEmotionId,
         });
 
-        return res.json({doesThoughtCreated});
-    } catch ({errors}) {
-        const { message, path } = errors[0];
-        return res.status(400).json({
-            [path]: message
-        });
+        return res.json({wasThoughtCreated});
+    } catch (errors) {
+        ThrowErrorCustom.getErrors(res, errors);
     }
 }
 
 async function get(req, res) {
     try {
-        const doesThoughtFound = await Thought.findAll({
+        const wasThoughtFound = await Thought.findAll({
             order: [['id', 'DESC']],
             where: {
                 user_id: req.userId,
             }
         });
 
-        return res.json({doesThoughtFound})
+        return res.json({wasThoughtFound})
 
-    } catch ({errors}) {
-        const { message, path } = errors[0];
-        return res.status(400).json({
-            [path]: message
-        });
+    } catch (errors) {
+        ThrowErrorCustom.getErrors(res, errors);
     }
 }
 
 async function destroy(req, res) {
     try {
-        const { thought_id } = req.params;
-        const doesThoughtFound = await Thought.destroy({
+        const { thought_id: thoughtIdReceived } = req.params;
+
+        if(!thoughtIdReceived) {
+            throw new ThrowErrorCustom({
+                message: 'É obrigatório informar o id do pensamento',
+                status: 400
+            })
+        }
+
+        const wasThoughtFound = await Thought.destroy({
             where: {
-                id: thought_id,
+                id: thoughtIdReceived,
                 user_id: req.userId,
             }
         });
 
-        return res.json({doesThoughtFound})
+        return res.json({wasThoughtFound})
 
-    } catch ({errors}) {
-        const { message, path } = errors[0];
-        return res.status(400).json({
-            [path]: message
-        });
+    } catch (errors) {
+        ThrowErrorCustom.getErrors(res, errors);
     }
 }
 
 async function update(req, res) {
     try {
         const { thought_id: thoughtIdReceived } = req.params;
+        const { description: descriptionReceived, emotion_name: emotionNameReceived } = req.body;
 
-        const { description: descriptionReceived, emotion_id: emotionIdReceived } = req.body;
+        if(!thoughtIdReceived) {
+            throw new ThrowErrorCustom({
+                message: 'É obrigatório informar o id do pensamento',
+                status: 400
+            })
+        }
 
-        const doesThoughtFound = await Thought.update(
+        if(!emotionNameReceived) {
+            throw new ThrowErrorCustom({
+                message: 'É obrigatório informar a cor',
+                status: 400
+            })
+        }
+
+        if(!descriptionReceived) {
+            throw new ThrowErrorCustom({
+                message: 'É obrigatório informar a descrição',
+                status: 400
+            })
+        }
+
+        const {id: gotEmotionId} = await Emotion.findOne({
+            attributes: ['id'],
+            where: {
+                name: emotionNameReceived
+            }
+        });
+
+        const wasThoughtFound = await Thought.update(
             {
                 description: descriptionReceived, //passing descriptionReceived from 'req.body' to description from Model
-                emotion_id: emotionIdReceived //passing emotionIdReceived from 'req.body' to emotion_id from Model
+                emotion_id: gotEmotionId //passing emotionIdReceived from 'req.body' to emotion_id from Model
             },
             {
                 where: {
@@ -88,13 +129,10 @@ async function update(req, res) {
             }
         );
 
-        return res.json({doesThoughtFound})
+        return res.json({wasThoughtFound})
 
     } catch ({errors}) {
-        const { message, path } = errors[0];
-        return res.status(400).json({
-            [path]: message
-        });
+        ThrowErrorCustom.getErrors(res, errors);
     }
 }
 
