@@ -1,6 +1,6 @@
 'use strict';
 
-const { DataTypes, Model, STRING } = require('sequelize');
+const { DataTypes, Model } = require('sequelize');
 const sequelize = require('../database/connection');
 
 class Thought extends Model {
