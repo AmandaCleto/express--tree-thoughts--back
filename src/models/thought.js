@@ -11,10 +11,6 @@ class Thought extends Model {
 };
 
 Thought.init({
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true,
-  },
   description: {
     type: DataTypes.STRING,
     validate: {
@@ -41,8 +37,8 @@ Thought.init({
       },
     }
   },
-  create_at: DataTypes.DATE,
-  update_at: DataTypes.DATE,
+  createdAt: { type: DataTypes.DATE, field: 'created_at' },
+  updatedAt: { type: DataTypes.DATE, field: 'updated_at' },
 }, {
   sequelize,
   modelName: 'Thoughts',

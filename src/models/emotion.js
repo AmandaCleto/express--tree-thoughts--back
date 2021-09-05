@@ -18,8 +18,8 @@ Emotion.init({
   name: {
     type: DataTypes.STRING,
   },
-  create_at: DataTypes.DATE,
-  update_at: DataTypes.DATE,
+  createdAt: { type: DataTypes.DATE, field: 'created_at' },
+  updatedAt: { type: DataTypes.DATE, field: 'updated_at' },
 }, {
   sequelize,
   modelName: 'Emotions',

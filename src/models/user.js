@@ -11,10 +11,6 @@ class User extends Model {
 };
 
 User.init({
-  id: {
-    type: DataTypes.INTEGER,
-    primaryKey: true
-  },
   name: {
     type: DataTypes.STRING,
     validate: {
@@ -36,9 +32,8 @@ User.init({
     },
   },
   password: DataTypes.CHAR(60),
-  profile_image: DataTypes.STRING,
-  create_at: DataTypes.DATE,
-  update_at: DataTypes.DATE,
+  createdAt: { type: DataTypes.DATE, field: 'created_at' },
+  updatedAt: { type: DataTypes.DATE, field: 'updated_at' },
 }, {
   defaultScope: {
     attributes: {
