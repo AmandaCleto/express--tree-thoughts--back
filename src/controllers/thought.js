@@ -1,16 +1,24 @@
 const Thought = require('../models/thought');
+const Emotion = require('../models/emotion');
 
 async function create(req, res) {
     try {
         const {
             description: descriptionReceived,
-            emotion_id: emotionIdReceived
+            emotion_name: emotionNameReceived
         } = req.body;
+
+        const {id: getEmotionId} = await Emotion.findOne({
+            attributes: ['id'],
+            where: {
+                name: emotionNameReceived
+            }
+        });
 
         const doesThoughtCreated = await Thought.create({
             user_id: req.userId,
             description: descriptionReceived,
-            emotion_id: emotionIdReceived,
+            emotion_id: getEmotionId,
         });
 
         return res.json({doesThoughtCreated});
@@ -25,6 +33,7 @@ async function create(req, res) {
 async function get(req, res) {
     try {
         const doesThoughtFound = await Thought.findAll({
+            order: [['id', 'DESC']],
             where: {
                 user_id: req.userId,
             }
