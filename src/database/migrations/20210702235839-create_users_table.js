@@ -3,8 +3,8 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.createTable(
-      'Users', 
-      { 
+      'Users',
+      {
         id: {
           type: Sequelize.INTEGER(11).UNSIGNED,
           allowNull: false,
@@ -24,16 +24,11 @@ module.exports = {
           type: Sequelize.CHAR(60),
           allowNull: false,
         },
-        profile_image: {
-          type: Sequelize.STRING,
-          allowNull: false,
-          defaultValue: ''
-        },
-        create_at: {
+        created_at: {
           type: Sequelize.DATE,
           defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
         },
-        update_at: {
+        updated_at: {
           type: Sequelize.DATE,
           defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
         }
