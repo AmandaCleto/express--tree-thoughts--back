@@ -48,6 +48,10 @@ async function get(req, res) {
             order: [['id', 'DESC']],
             where: {
                 user_id: req.userId,
+            },
+            include: {
+                association: 'emotions',
+                attributes: ['name']
             }
         });
 
