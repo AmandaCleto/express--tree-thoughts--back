@@ -7,14 +7,14 @@ const userController = require('../controllers/user');
 const authenticateController = require('../controllers/authenticate');
 const thoughtController = require('../controllers/thought');
 
-router.post('/authenticate', authenticateController.authenticate); // login
+router.post('/authenticate', authenticateController.authenticate);
 
-router.post('/user', userController.create); // signin - register
-router.get('/user', [authMiddleware], userController.get); // signin - register
+router.post('/user', userController.create);
+router.get('/user', [authMiddleware], userController.get);
 
-router.post('/thought', [authMiddleware], thoughtController.create); // register new thought
-router.get('/thought', [authMiddleware], thoughtController.get); // get list of thoughts
-router.put('/thought/:thought_id', [authMiddleware], thoughtController.update); // update new thought
-router.delete('/thought/:thought_id', [authMiddleware], thoughtController.destroy); // get list of thoughts
+router.post('/thought', [authMiddleware], thoughtController.create);
+router.get('/thought', [authMiddleware], thoughtController.get);
+router.put('/thought/:thought_id', [authMiddleware], thoughtController.update);
+router.delete('/thought/:thought_id', [authMiddleware], thoughtController.destroy);
 
 module.exports = router;
