@@ -26,22 +26,22 @@ async function create(req, res) {
             })
         }
 
-        const doesUserCreated = await User.create({
+        const wasUserCreate = await User.create({
             name: nameReceived,
             email: emailReceived,
             password: passwordReceived
         }, {isNewRecord: true});
 
-        if(!doesUserCreated) {
+        if(!wasUserCreate) {
             throw new ThrowErrorCustom({
                 message: 'Não foi possível criar o usuário',
                 status: 400
             })
         }
 
-        doesUserCreated.password = null;
+        wasUserCreate.password = null;
 
-        return res.json({doesUserCreated});
+        return res.json({wasUserCreate});
 
     } catch (errors) {
         ThrowErrorCustom.getErrors(res, errors);
