@@ -10,7 +10,7 @@
 </p>
 <br>
 
-## Idea 💡:
+## Idea: 💡
 Here will be concentrated the API from Tree-Thoughts (Front-end) project. In it will be the integration between the thoughts card and the database.\
 This project will be using NodeJs with the library Express.js following REST Design Pattern.<br>
 ![Logo Tree Thoughts Dark Version](https://amandacleto.github.io/images-for-projects/public/images/tree-thoughts/tree-thoughts-logo-bg-dark.svg)
@@ -69,6 +69,9 @@ The scripts below run the project build.
    npm run watch
    ```
    ###### Command to run the project in watch development mode
+
+### Conclusion: 👍
+After the first configuration of the project following the steps above, the next few times, it will only be necessary to run the command to start the server in **development mode**
 
 ---
 ## Links: 🌐
