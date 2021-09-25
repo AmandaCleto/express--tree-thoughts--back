@@ -88,5 +88,5 @@ After the first configuration of the project following the steps above, the next
 [<ins>JWT NodeJS</ins>](https://github.com/auth0/node-jsonwebtoken)
 
 ---
-## Licença
+## License
 This project is licensed under the [MIT] license - see the LICENSE.md file for details
