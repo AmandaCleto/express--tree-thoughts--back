@@ -11,7 +11,7 @@
 <br>
 
 ## Idea: 💡
-Here will be concentrated the API from Tree-Thoughts (Front-end) project. In it will be the integration between the thoughts card and the database.\
+Here will be concentrated the API from Tree-Thoughts (Front-end) project. In it will be the integration between the thoughts cards and the database.\
 This project will be using NodeJs with the library Express.js following REST Design Pattern.<br>
 ![Logo Tree Thoughts Dark Version](https://amandacleto.github.io/images-for-projects/public/images/tree-thoughts/tree-thoughts-logo-bg-dark.svg)
 
@@ -39,7 +39,7 @@ To configure the project's environment variable file, follow the steps below:
 - Step 1- Create an ```.env``` file at the root of the project;
 - Step 2- Copy the contents of the ```.env.example``` file to your new .env file;
 - Step 3- Change the content informing your **database connection data** and **TCP port** for project execution
-#### After env setup, proceed with the steps below ✌
+#### After the env setup, proceed with the steps below ✌
 
 ### Running database structure:
 ##### ⚠ Database structure commands should only be executed at the initial project setup or when its structure is changed ⚠
