@@ -1,7 +1,6 @@
 const User = require('../models/user');
+const { generateToken } = require('../helpers/jwtGenerate');
 const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const process = require('process');
 const { ThrowErrorCustom } = require('../utils/error');
 
 async function authenticate(req, res) {
@@ -44,12 +43,7 @@ async function authenticate(req, res) {
             })
         }
 
-        const tokenJwt = jwt.sign(
-            { userId: doesUserExist.id }, // payload = data
-            process.env.JWT_SECRET, // secret key
-            { algorithm: 'HS256', expiresIn: '12h' } // configs with iat
-        );
-
+        const tokenJwt = generateToken({ userId: doesUserExist.id });
         return res.json({token: tokenJwt});
     } catch (errors) {
         ThrowErrorCustom.getErrors(res, errors);

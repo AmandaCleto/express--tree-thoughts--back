@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const { generateToken } = require('../helpers/jwtGenerate');
 const { ThrowErrorCustom } = require('../utils/error');
 
 async function create(req, res) {
@@ -41,7 +42,8 @@ async function create(req, res) {
 
         wasUserCreate.password = null;
 
-        return res.json({wasUserCreate});
+        const tokenJwt = generateToken({ userId: wasUserCreate.id });
+        return res.json({wasUserCreate, token: tokenJwt});
 
     } catch (errors) {
         ThrowErrorCustom.getErrors(res, errors);
